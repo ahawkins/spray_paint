@@ -32,4 +32,12 @@ class ScopeTest < ActionDispatch::IntegrationTest
     assert_includes Post.tagged('uplift', 'progressive'), uplift
     assert_not_includes Post.tagged('uplift', 'progressive'), melodic
   end
+
+  def test_scope_with_count_returns_a_number
+    5.times do |i|
+      Post.create! :name => "Post #{i}", :tags => %w(melodic progressive)
+    end
+
+    assert_equal 5, Post.tagged('melodic', 'progressive').count
+  end
 end
