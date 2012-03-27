@@ -55,6 +55,15 @@ class TaggingTest < ActionDispatch::IntegrationTest
     assert_equal %w(epic), post.tags
   end
 
+  def test_tag_names_are_not_case_senstive_for_new_objects
+    post = Post.new :name => 'Test'
+
+    post.tags = %W(epic EPIC EpIc)
+    post.save!
+
+    assert_equal %w(epic), post.tags
+  end
+
   def test_association_looks_like_an_array
     post = Post.create :name => 'Test'
 
