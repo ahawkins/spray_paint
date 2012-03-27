@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
   s.version     = Graffti::VERSION
   s.authors     = ["Adam Hawkins"]
   s.email       = ["me@broadcastingadam.com"]
-  s.homepage    = "https://github.com/twinturbo/graffti"
+  s.homepage    = "https://github.com/threadedlabs/graffti"
   s.summary     = "Simplest possible tagging for ActiveRecord"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "readme.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.0"
