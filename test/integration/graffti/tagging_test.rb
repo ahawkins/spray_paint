@@ -54,4 +54,13 @@ class TaggingTest < ActionDispatch::IntegrationTest
 
     assert_equal %w(epic), post.tags
   end
+
+  def test_association_looks_like_an_array
+    post = Post.create :name => 'Test'
+
+    post.tags = %W(epic EPIC EpIc)
+    post.save!
+
+    assert_equal post.tags.names.inspect, post.tags.inspect
+  end
 end
