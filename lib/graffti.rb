@@ -17,18 +17,19 @@ module Graffti
         end
 
         def <<(*args)
-          args.flatten.each do |tag|
-            if tag.is_a? Graffti::Tag
-              self.push tag
-            else
-              self.push Graffti::Tag.find_or_create_by_name tag
-            end
+          args.flatten.map(&:downcase).uniq.each do |tag|
+            self.push Graffti::Tag.find_or_create_by_name(tag) unless tagged?(tag)
           end
           self
         end
 
         def ==(other)
           names == other
+        end
+
+        private
+        def tagged?(name)
+          names.include?(name.downcase)
         end
       end
 
@@ -46,8 +47,7 @@ module Graffti
 
           tag_join = "INNER JOIN graffti_tags AS #{join_table} ON #{join_table}.id = #{tagging_table}.tag_id"
 
-          scope.joins(taggings_join).joins(tag_join).
-            where(join_table.to_sym => {:name => tag}) 
+          scope.joins(taggings_join).joins(tag_join).where(join_table.to_sym => {:name => tag.downcase}) 
         end
       end
     end
@@ -55,9 +55,7 @@ module Graffti
     def tags=(*args)
       tags.clear
 
-      args.flatten.each do |tag|
-        tags << tag
-      end
+      tags << args
 
       tags
     end
