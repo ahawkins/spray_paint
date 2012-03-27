@@ -13,25 +13,26 @@
 
 ActiveRecord::Schema.define(:version => 20120327123850) do
 
-  create_table "graffti_taggings", :force => true do |t|
+  create_table "graffiti_taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
   end
 
-  add_index "graffti_taggings", ["tag_id"], :name => "index_graffti_taggings_on_tag_id"
-  add_index "graffti_taggings", ["taggable_id", "taggable_type"], :name => "index_graffti_taggings_on_taggable_id_and_taggable_type"
+  add_index "graffiti_taggings", ["tag_id"], :name => "index_graffiti_taggings_on_tag_id"
+  add_index "graffiti_taggings", ["taggable_id", "taggable_type"], :name => "index_graffiti_taggings_on_taggable_id_and_taggable_type"
 
-  create_table "graffti_tags", :force => true do |t|
+  create_table "graffiti_tags", :force => true do |t|
     t.string "name"
   end
 
-  add_index "graffti_tags", ["name"], :name => "index_graffti_tags_on_name"
+  add_index "graffiti_tags", ["name"], :name => "index_graffiti_tags_on_name"
 
   create_table "posts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
 end

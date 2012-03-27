@@ -1,3 +1,3 @@
-module Graffti
+module Graffiti
   VERSION = "0.0.1"
 end

@@ -1,4 +1,4 @@
-# Graffti
+# Graffiti
 
 This is the simplest possible implementation for tagging for
 ActiveRecord. It does not do any of the fancy things that most of the
@@ -17,12 +17,12 @@ way, you can override and call `super`. What a thought right?
 Using is simple:
 
 ```
-$ bundle exec rake db:migrate SCOPE=graffti
+$ bundle exec rake db:migrate SCOPE=graffiti
 ```
 
 ```ruby
 class DJ
-  include Graffti::Tags
+  include Graffiti::Tags
 end
 
 markus = DJ.new :name => "Markus Schulz"

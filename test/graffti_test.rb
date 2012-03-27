@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class GrafftiTest < ActiveSupport::TestCase
+class GraffitiTest < ActiveSupport::TestCase
   test "truth" do
-    assert_kind_of Module, Graffti
+    assert_kind_of Module, Graffiti
   end
 end
