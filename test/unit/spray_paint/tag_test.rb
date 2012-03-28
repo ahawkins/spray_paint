@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Graffiti
+module SprayPaint
   class TagTest < ActiveSupport::TestCase
     def test_name_is_converted_to_lower_case
       tag = Tag.create! :name => 'UPLIFT'

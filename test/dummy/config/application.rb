@@ -9,7 +9,7 @@ require "active_resource/railtie"
 require "rails/test_unit/railtie"
 
 Bundler.require
-require "graffiti"
+require "spray_paint"
 
 module Dummy
   class Application < Rails::Application

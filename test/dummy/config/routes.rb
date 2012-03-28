@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount Graffiti::Engine => "/graffiti"
+  mount SprayPaint::Engine => "/spray_paint"
 end

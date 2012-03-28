@@ -1,3 +1,3 @@
-module Graffiti
+module SprayPaint
   VERSION = "0.0.1"
 end

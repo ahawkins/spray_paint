@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  include Graffiti::Tags
+  include SprayPaint::Tags
 
   validates :name, :presence => true
 end

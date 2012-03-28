@@ -13,26 +13,26 @@
 
 ActiveRecord::Schema.define(:version => 20120327123850) do
 
-  create_table "graffiti_taggings", :force => true do |t|
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "spray_paint_taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
     t.datetime "created_at"
   end
 
-  add_index "graffiti_taggings", ["tag_id"], :name => "index_graffiti_taggings_on_tag_id"
-  add_index "graffiti_taggings", ["taggable_id", "taggable_type"], :name => "index_graffiti_taggings_on_taggable_id_and_taggable_type"
+  add_index "spray_paint_taggings", ["tag_id"], :name => "index_spray_paint_taggings_on_tag_id"
+  add_index "spray_paint_taggings", ["taggable_id", "taggable_type"], :name => "index_spray_paint_taggings_on_taggable_id_and_taggable_type"
 
-  create_table "graffiti_tags", :force => true do |t|
+  create_table "spray_paint_tags", :force => true do |t|
     t.string "name"
   end
 
-  add_index "graffiti_tags", ["name"], :name => "index_graffiti_tags_on_name"
-
-  create_table "posts", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "spray_paint_tags", ["name"], :name => "index_spray_paint_tags_on_name"
 
 end

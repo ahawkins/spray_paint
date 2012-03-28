@@ -1,13 +1,13 @@
-require "graffiti/engine"
+require "spray_paint/engine"
 require "digest/sha1"
 
-module Graffiti
+module SprayPaint
   module Tags
     extend ActiveSupport::Concern
 
     included do
-      has_many :taggings, :class_name => "Graffiti::Tagging", :dependent => :destroy, :as => :taggable
-      has_many :tags, :through => :taggings, :class_name => "Graffiti::Tag", :source => :tag do
+      has_many :taggings, :class_name => "SprayPaint::Tagging", :dependent => :destroy, :as => :taggable
+      has_many :tags, :through => :taggings, :class_name => "SprayPaint::Tag", :source => :tag do
         def names
           pluck 'name'
         end
@@ -18,7 +18,7 @@ module Graffiti
 
         def <<(*args)
           args.flatten.map(&:downcase).uniq.each do |tag|
-            self.push Graffiti::Tag.find_or_create_by_name(tag) unless tagged?(tag)
+            self.push SprayPaint::Tag.find_or_create_by_name(tag) unless tagged?(tag)
           end
           self
         end
@@ -41,11 +41,11 @@ module Graffiti
           tagging_table = "tagging_#{uniq_key}"
 
           taggings_join = %Q{
-            INNER JOIN graffiti_taggings AS #{tagging_table} 
+            INNER JOIN spray_paint_taggings AS #{tagging_table} 
             ON #{table_name}.id = #{tagging_table}.taggable_id AND #{tagging_table}.taggable_type = '#{base_class.to_s}'
           }
 
-          tag_join = "INNER JOIN graffiti_tags AS #{join_table} ON #{join_table}.id = #{tagging_table}.tag_id"
+          tag_join = "INNER JOIN spray_paint_tags AS #{join_table} ON #{join_table}.id = #{tagging_table}.tag_id"
 
           scope.joins(taggings_join).joins(tag_join).where(join_table.to_sym => {:name => tag.downcase}) 
         end

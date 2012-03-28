@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Graffiti
+module SprayPaint
   class TaggingTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true
